@@ -1,5 +1,3 @@
-class P1 {
-    int main() {
-        
-    }
+int main() { 
+    return 0; 
 }

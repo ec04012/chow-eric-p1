@@ -1,30 +1,29 @@
 typedef unsigned int uint;
 
-class Matrix {
-    private:
-        double** arr;
+#include "Matrix.h"
 
-    public:
-        Matrix(uint rows, uint cols);                   // constructor (all elements initialized to 0)
-        Matrix(double** values, int w, int h);          // constructor (must make a copy of the passed in array)
-        Matrix(const Matrix & m);                       // copy constructor
-        ~Matrix();                                      // destructor
+double **arr;
+Matrix::Matrix(uint rows, uint cols) {}
+Matrix::Matrix(double **values, int w, int h) {}
 
-        Matrix add(double s) const;                     // add scalar to this matrix
-        Matrix add(const Matrix & m) const;             // add this matrix and another matrix
+Matrix::Matrix(const Matrix &m) {}
+Matrix::~Matrix() {}
 
-        Matrix subtract(double s) const;                // subtract scalar from this matrix
-        Matrix subtract(const Matrix & m) const;        // subtract another matrix from this matrix
+Matrix Matrix::add(double s) const {}
+Matrix Matrix::add(const Matrix &m) const {}
 
-        Matrix multiply(double s) const;                // multiply this matrix by a scalar
-        Matrix multiply(const Matrix & m) const;        // multiply this matrix by another matrix
+Matrix Matrix::subtract(double s) const {}
+Matrix Matrix::subtract(const Matrix &m) const {}
 
-        Matrix divide(double s) const;                  // divide this matrix by a scalar
-        Matrix t() const;                               // transpose of this matrix
+Matrix Matrix::multiply(double s) const {}
+Matrix Matrix::multiply(const Matrix &m) const {}
 
-        const uint numRows() const;                     // returns the number of rows
-        const uint numCols() const;                     // returns the number of cols
+Matrix Matrix::divide(double s) const {}
+Matrix Matrix::t() const {}
 
-        double & at(uint row, uint col);                // get/set element at row,col
-        const double & at(uint row, uint col) const;    // get element at row,col (when using a const object)
-};
+const uint Matrix::numRows() const {}
+const uint Matrix::numCols() const {}
+
+double & Matrix::at(uint row, uint col) {}
+const double & Matrix::at(uint row, uint col) const {}
+;
