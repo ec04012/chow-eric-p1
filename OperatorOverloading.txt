@@ -1,0 +1,17 @@
+Matrix operator + (Matrix const & e) {
+
+    
+}
+
+
+
+Header
+void fn (int a) {
+
+}
+
+CPP
+void Test::fn (int a) {
+
+    
+}
