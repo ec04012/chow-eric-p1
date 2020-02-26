@@ -4,7 +4,9 @@
 typedef unsigned int uint;
 
 class Matrix {
-
+    private:
+        double **arr;
+        
     public:
 
         Matrix(uint rows, uint cols);                   // constructor (all elements initialized to 0)
