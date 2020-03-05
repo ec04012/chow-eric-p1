@@ -8,6 +8,7 @@ double** arr;
 double tempX = 0;
 int m_rows;
 int m_cols;
+
 Matrix::Matrix(uint rows, uint cols) {
 	m_cols = cols;
 	m_rows = rows;
@@ -41,12 +42,12 @@ Matrix Matrix::add(double s) const {
 		for (int j = 0; j < cols; j++) {
 			arr[i][j] = arr[i][j] + s;
 		}
-	}	
+	}
 	*/
 	return Matrix(1, 1);
 }
 Matrix Matrix::add(const Matrix& m) const {
-	return Matrix(0, 0);	
+	return Matrix(0, 0);
 }
 
 Matrix Matrix::subtract(double s) const {
@@ -71,10 +72,10 @@ Matrix Matrix::t() const {
 }
 
 const uint Matrix::numRows() const {
-	return 1;
+	return m_rows;
 }
 const uint Matrix::numCols() const {
-	return 1;
+	return m_cols;
 }
 
 double& Matrix::at(uint row, uint col) {
