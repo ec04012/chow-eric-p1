@@ -4,11 +4,6 @@ typedef unsigned int uint;
 #include <iostream>
 using namespace std;
 
-double** arr;
-double tempX = 0;
-int m_rows;
-int m_cols;
-
 Matrix::Matrix(uint rows, uint cols) {
 	m_cols = cols;
 	m_rows = rows;
@@ -38,11 +33,11 @@ Matrix::~Matrix() {
 
 Matrix Matrix::add(double s) const {
 	/*
-	for (int i = 0; i < rows; i++) {
-		for (int j = 0; j < cols; j++) {
-			arr[i][j] = arr[i][j] + s;
-		}
-	}
+      for (int i = 0; i < rows; i++) {
+      for (int j = 0; j < cols; j++) {
+      arr[i][j] = arr[i][j] + s;
+      }
+      }
 	*/
 	return Matrix(1, 1);
 }
