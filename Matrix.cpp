@@ -93,7 +93,19 @@ Matrix Matrix::multiply(double s) const {
 }
 
 Matrix Matrix::multiply(const Matrix& m) const {
-    return Matrix(0,0);
+    /**
+     * Temp will have the same number of rows as this
+     * and same number of cols as m
+     **/
+    Matrix temp (m_rows, m.m_cols);
+    for (int i = 0; i < m_rows; i++) { // for every row in this
+        for (int j = 0; j < m.m_cols; j++) { // for ever col in m
+            for (int k = 0; k < m_cols; k++) { // compute product of row and col
+                temp.at(i, j) = temp.at(i,j) + arr[i][k] + m.at(k,j);
+            }
+        }
+    }
+    return temp;
 }
 
 Matrix Matrix::divide(double s) const {
