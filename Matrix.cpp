@@ -117,8 +117,17 @@ Matrix Matrix::divide(double s) const {
     }
     return temp;
 }
+/**
+ * Transpose of this matrix
+ **/
 Matrix Matrix::t() const {
-	return Matrix(0, 0);
+    Matrix temp (m_cols, m_rows);
+    for (int i = 0; i < m_rows; i++) {
+        for (int j = 0; j < m_cols; j++) {
+            temp.at(j, i) = arr[i][j];
+        }
+    }
+    return temp;
 }
 
 const uint Matrix::numRows() const {
