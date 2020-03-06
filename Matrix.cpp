@@ -1,7 +1,6 @@
 typedef unsigned int uint;
 
 #include "Matrix.h"
-#include <iostream>
 using namespace std;
 
 Matrix::Matrix(uint rows, uint cols) {
@@ -37,7 +36,6 @@ Matrix::Matrix(const Matrix& m) {
 }
 
 Matrix::~Matrix() {
-	cout << "rows" << m_rows << endl;
 	for (int i = 0; i < m_rows; i++) {
 		delete[] arr[i];
 	}
@@ -133,6 +131,7 @@ Matrix Matrix::t() const {
 const uint Matrix::numRows() const {
 	return m_rows;
 }
+
 const uint Matrix::numCols() const {
 	return m_cols;
 }
@@ -140,6 +139,23 @@ const uint Matrix::numCols() const {
 double& Matrix::at(uint row, uint col) {
 	return arr[row][col];
 }
+
 const double& Matrix::at(uint row, uint col) const {
 	return arr[row][col];
 }
+
+// overloaded stream insertion operator
+// If the matrix is 0x0, nothing is printed
+std::ostream & operator<<(std::ostream & output, const Matrix & m) {
+    for (uint i = 0; i < m.numRows(); i++) {
+        output << "[";
+        for (uint j = 0; j < m.numCols(); j++) {
+            output << m.at(i,j);
+            if (j < m.numCols() - 1) {
+                output << ", ";
+            }
+        }
+        output << "]\n";
+    }
+    return output; // enables cout << a << b << c;
+} // end function operator<<

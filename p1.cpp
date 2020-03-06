@@ -3,10 +3,11 @@
 
 using namespace std;
 
-int main() { 
+int main() {
     Matrix m (3,3);
-    cout << m.at(0,0) << endl;
-    m.at(0,0) = 3;
-    cout << m.at(0,0) << endl;
-    return 0; 
+    for (int i = 0; i < 9; i++) {
+        m.at(i/3,i%3)=i;
+    }
+    cout << m;
+    return 0;
 }
