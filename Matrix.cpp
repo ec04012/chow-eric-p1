@@ -64,10 +64,22 @@ Matrix Matrix::add(const Matrix& m) const {
 }
 
 Matrix Matrix::subtract(double s) const {
-	return Matrix(0, 0);
+    Matrix temp (m_rows, m_cols);
+    for (int i = 0; i < m_rows; i++) {
+        for (int j = 0; j < m_cols; j++) {
+            temp.at(i, j) = arr[i][j] - s;
+        }
+    }
+    return temp;
 }
 Matrix Matrix::subtract(const Matrix& m) const {
-	return Matrix(0, 0);
+    Matrix temp (m_rows, m_cols);
+    for (int i = 0; i < m_rows; i++) {
+        for (int j = 0; j < m_cols; j++) {
+            temp.at(i, j) = arr[i][j] - m.at(i,j);
+        }
+    }
+    return temp;
 }
 
 Matrix Matrix::multiply(double s) const {
