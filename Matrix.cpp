@@ -12,6 +12,7 @@ Matrix::Matrix(uint rows, uint cols) {
 		arr[i] = new double[cols];
 	}
 }
+
 Matrix::Matrix(double** values, int w, int h) {
 	m_cols = w;
 	m_rows = h;
@@ -22,7 +23,19 @@ Matrix::Matrix(double** values, int w, int h) {
 		}
 	}
 }
-Matrix::Matrix(const Matrix& m) {}
+
+Matrix::Matrix(const Matrix& m) {
+    m_cols = m.m_cols;
+	m_rows = m.m_rows;
+	arr = new double*[m_rows];
+    for (int i = 0; i < m.m_rows; i++) {
+        arr[i] = new double[m_cols];
+        for (int j = 0; j < m.m_cols; j++) {
+            arr[i][j] = m.at(i, j);
+        }
+    }
+}
+
 Matrix::~Matrix() {
 	cout << "rows" << m_rows << endl;
 	for (int i = 0; i < m_rows; i++) {
@@ -32,14 +45,13 @@ Matrix::~Matrix() {
 }
 
 Matrix Matrix::add(double s) const {
-	/*
-      for (int i = 0; i < rows; i++) {
-      for (int j = 0; j < cols; j++) {
-      arr[i][j] = arr[i][j] + s;
-      }
-      }
-	*/
-	return Matrix(1, 1);
+    Matrix temp (m_rows, m_cols);
+    for (int i = 0; i < m_rows; i++) {
+        for (int j = 0; j < m_cols; j++) {
+            temp.at(i, j) = arr[i][j] + s;
+        }
+    }
+    return temp;
 }
 Matrix Matrix::add(const Matrix& m) const {
 	return Matrix(0, 0);
