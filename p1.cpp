@@ -66,6 +66,11 @@ int main() {
     cout << "m is unchanged" << endl;
     cout << m << endl;
 
+    // Divide by sclar
+    cout << "Divide o by 3" << endl;
+    cout << o.divide(3);
+    cout << "o is unchanged" << endl;
+    cout << o << endl;
 
     return 0;
 }
