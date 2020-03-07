@@ -57,6 +57,10 @@ Matrix Matrix::add(const Matrix& m) const {
     Matrix temp (m_rows, m_cols);
     for (int i = 0; i < m_rows; i++) {
         for (int j = 0; j < m_cols; j++) {
+            /**
+            cout << "arr[i][j]:" << arr[i][j];
+            cout << "m[i][j]:" << m.at(i,j) << endl;
+            **/
             temp.at(i, j) = arr[i][j] + m.at(i,j);
         }
     }

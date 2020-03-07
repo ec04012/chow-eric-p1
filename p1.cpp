@@ -13,7 +13,7 @@ int main() {
 
     // Copy constructor
     Matrix n (m);
-    cout << "n matrix:\n" << n << endl;
+    cout << "n matrix, copy of m:\n" << n << endl;
 
     // 2d Array constructor
     double ** arr = new double*[3];
@@ -24,11 +24,23 @@ int main() {
         }
     }
     Matrix o (arr,3,3);
-    cout << "o matrix:\n" << o << endl;
+    cout << "o matrix, constructed from array:\n" << o << endl;
     for (int i = 0; i < 3; i++) {
         delete [] arr[i];
     }
     delete [] arr;
+
+    // Adding scalar
+    cout << "Adding 10 to m" << endl;
+    cout << m.add(10);
+    cout << "m is unchanged" << endl;
+    cout << m << endl;;
+
+    // Adding another matrix
+    cout << "Adding m and n" << endl;
+    cout << m.add(n);
+    cout << "m is unchanged" << endl;
+    cout << m << endl;;
 
     return 0;
 }
