@@ -1,6 +1,7 @@
 typedef unsigned int uint;
 
 #include "Matrix.h"
+#include <iostream>
 using namespace std;
 
 Matrix::Matrix(uint rows, uint cols) {
@@ -17,6 +18,7 @@ Matrix::Matrix(double** values, int w, int h) {
 	m_rows = h;
 	arr = new double*[h];
 	for(int i = 0; i < h; i++) {
+        arr[i] = new double[w];
 		for (int j = 0; j < w; j++) {
 			arr[i][j] = values[i][j];
 		}
