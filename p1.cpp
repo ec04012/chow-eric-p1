@@ -34,13 +34,26 @@ int main() {
     cout << "Adding 10 to m" << endl;
     cout << m.add(10);
     cout << "m is unchanged" << endl;
-    cout << m << endl;;
+    cout << m << endl;
 
     // Adding another matrix
     cout << "Adding m and n" << endl;
     cout << m.add(n);
     cout << "m is unchanged" << endl;
-    cout << m << endl;;
+    cout << m << endl;
+
+    // Subtracting scalar
+    cout << "Subtracting 20 from m" << endl;
+    cout << m.subtract(20);
+    cout << "m is unchanged" << endl;
+    cout << m << endl;
+
+    // Subtracting another matrix
+    cout << "Subtracting m from o" << endl;
+    cout << o.subtract(m);
+    cout << "o is unchanged" << endl;
+    cout << o << endl;
+
 
     return 0;
 }
