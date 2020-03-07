@@ -54,6 +54,18 @@ int main() {
     cout << "o is unchanged" << endl;
     cout << o << endl;
 
+    // Multiply by scalar
+    cout << "Multiply m by 3" << endl;
+    cout << m.multiply(3);
+    cout << "m is unchanged" << endl;
+    cout << m << endl;
+
+    // Multiply by another matrix
+    cout << "Multiply m by o" << endl;
+    cout << m.multiply(o);
+    cout << "m is unchanged" << endl;
+    cout << m << endl;
+
 
     return 0;
 }

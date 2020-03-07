@@ -10,6 +10,9 @@ Matrix::Matrix(uint rows, uint cols) {
 	arr = new double*[rows];
 	for(uint i = 0; i < rows; i++) {
 		arr[i] = new double[cols];
+        for (uint j = 0; j < cols; j++) {
+            arr[i][j] = 0;
+        }
 	}
 }
 
@@ -105,7 +108,12 @@ Matrix Matrix::multiply(const Matrix& m) const {
     for (int i = 0; i < m_rows; i++) { // for every row in this
         for (int j = 0; j < m.m_cols; j++) { // for ever col in m
             for (int k = 0; k < m_cols; k++) { // compute product of row and col
-                temp.at(i, j) = temp.at(i,j) + arr[i][k] + m.at(k,j);
+                temp.at(i, j) = temp.at(i,j) + arr[i][k] * m.at(k,j);
+                /**
+                cout << "(" << i << "," << k << ")" << "\t";
+                cout << "(" << k << "," << j << ")" << endl;
+                cout << "temp.at " << i << "," << j << "\t" << temp.at(i,j) << endl;
+                **/
             }
         }
     }
