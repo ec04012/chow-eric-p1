@@ -158,21 +158,23 @@ const double& Matrix::at(uint row, uint col) const {
 	return arr[row][col];
 }
 
-// overloaded stream insertion operator
-// If the matrix is 0x0, nothing is printed
+// Stream instertion overload
 std::ostream & operator<<(std::ostream & output, const Matrix & m) {
-    for (uint i = 0; i < m.numRows(); i++) {
-        output << "[";
+    output << "[ ";
+    for (uint i = 0; i < m.numRows(); i++) {        
         for (uint j = 0; j < m.numCols(); j++) {
             output << m.at(i,j);
             if (j < m.numCols() - 1) {
                 output << ", ";
             }
+        }    
+        if (i < m.numRows() -1) {
+            output << " ]\n[ ";
         }
-        output << "]\n";
     }
-    return output; // enables cout << a << b << c;
-} // end function operator<<
+    output << " ]\n";
+    return output;
+} 
 
 // Matrix and scalar overloads
 Matrix operator+(const Matrix &m, const double &s) {
