@@ -21,7 +21,6 @@ void demoAdd() {
     cout << "Adding m and n" << endl;
     cout << m.add(n) << endl;
 }
-
 void demoSubtract() {
     // Subtracting scalar
     cout << "Subtracting 20 from m" << endl;
@@ -31,7 +30,6 @@ void demoSubtract() {
     cout << "Subtracting m from o" << endl;
     cout << o.subtract(m) << endl;
 }
-
 void demoMultiply() {
     // Multiply by scalar
     cout << "Multiply m by 3" << endl;
@@ -41,7 +39,6 @@ void demoMultiply() {
     cout << "Multiply m by o" << endl;
     cout << m.multiply(o) << endl;
 }
-
 void demoDivide() {
     // Divide by sclar
     cout << "Divide o by 3" << endl;
@@ -63,7 +60,6 @@ void demoAddOverload() {
     cout << "Adding m and n" << endl;
     cout << m + n << endl;
 }
-
 void demoSubtractOverload() {
     // Subtracting by scalar
     cout << "Subtracting 20 from m" << endl;
@@ -77,7 +73,6 @@ void demoSubtractOverload() {
     cout << "Subtracting m from o" << endl;
     cout << o - m << endl;
 }
-
 void demoMultiplyOverload() {
     // Multiply matrix by scalar
     cout << "Multiply m by 3" << endl;
@@ -91,7 +86,6 @@ void demoMultiplyOverload() {
     cout << "Multiply m by o" << endl;
     cout << m * o << endl;
 }
-
 void demoDivideOverload() {
     // Divide by scalar
     cout << "Divide o by 3" << endl;
@@ -101,14 +95,28 @@ void demoDivideOverload() {
     cout << "Divide 200 by o" << endl;
     cout << 200 / o << endl;
 }
+
 void demoConstMatrix() {
-    const Matrix cm (o);
+    const Matrix cm(o);
     cout << "cm at 0,0" << endl;
-    cout << cm(0,0) << endl;
-    cout << cm ;
+    cout << cm(0, 0) << endl;
+    cout << cm;
 
     cout << "Multiply cm by 5" << endl;
     cout << cm * 5 << endl;
+}
+void demoAssignment() {
+    Matrix temp(2, 3);
+    for (uint i = 0; i < temp.numRows(); i++) {
+        for (uint j = 0; j < temp.numCols(); j++) {
+            temp(i,j) = 50 + (i * temp.numRows()) + j;
+        }
+    }
+    cout << "Temp matrix:" << endl;
+    cout << temp;
+    cout << "Assigning m to temp:" << endl;
+    temp = m;
+    cout << temp << endl;
 }
 
 int main() {
@@ -144,5 +152,6 @@ int main() {
     demoMultiplyOverload();
     demoDivideOverload();
     demoConstMatrix();
+    demoAssignment();
     return 0;
 }
