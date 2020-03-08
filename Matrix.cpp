@@ -178,31 +178,64 @@ std::ostream & operator<<(std::ostream & output, const Matrix & m) {
 Matrix operator+(const Matrix &m, const double &s) {
     return m.add(s);
 }
-
 Matrix operator-(const Matrix &m, const double &s) {
     return m.subtract(s);
 }
-
 Matrix operator*(const Matrix &m, const double &s) {
     return m.multiply(s);
 }
-
 Matrix operator/(const Matrix &m, const double &s) {
     return m.divide(s);
+}
+
+// Scalar and Matrix overloads
+Matrix operator+(const double &s, const Matrix &m) {
+    return m.add(s);
+}
+Matrix operator-(const double &s, const Matrix &m) {
+    return m.subtract(s);
+}
+Matrix operator*(const double &s, const Matrix &m) {
+    return m.multiply(s);
+}
+Matrix operator/(const double &s, const Matrix &m) {
+    Matrix temp (m.m_rows, m.m_cols);
+    for (int i = 0; i < m.m_rows; i++) {
+        for (int j = 0; j < m.m_cols; j++) {
+            temp.at(i, j) = s / m.at(i,j);
+        }
+    }
+    return temp;
+}
+
+// Matrix and Matrix
+Matrix operator+(const Matrix &m, const Matrix &n) {
+    return m.add(n);
+}
+Matrix operator-(const Matrix &m, const Matrix &n) {
+    return m.subtract(n);
+}
+Matrix operator*(const Matrix &m, const Matrix &n) {
+    return m.multiply(n);
 }
 
 // Function call overloads
 double& Matrix::operator()(uint row, uint col) {
 	return arr[row][col];
 }
-
 const double& Matrix::operator()(uint row, uint col) const {
 	return arr[row][col];
 }
 
 // Assignment overload
 Matrix& Matrix::operator=(const Matrix & m) {
-    delete this;
+    // Delete this object
+    for (int i = 0; i < m_rows; i++) {
+		delete[] arr[i];
+	}
+	delete[] arr;
+
+    // Make a copy
     m_cols = m.m_cols;
 	m_rows = m.m_rows;
 	arr = new double*[m_rows];

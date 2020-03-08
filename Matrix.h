@@ -45,6 +45,17 @@ public:
     friend Matrix operator*(const Matrix &m, const double &s);
     friend Matrix operator/(const Matrix &m, const double &s);
 
+    // Scalar and Matrix
+    friend Matrix operator+(const double &s, const Matrix &m);
+    friend Matrix operator-(const double &s, const Matrix &m);
+    friend Matrix operator*(const double &s, const Matrix &m);
+    friend Matrix operator/(const double &s, const Matrix &m);
+
+    // Matrix and Matrix
+    friend Matrix operator+(const Matrix &m, const Matrix &n);
+    friend Matrix operator-(const Matrix &m, const Matrix &n);
+    friend Matrix operator*(const Matrix &m, const Matrix &n);
+
     // Overloaded Function call operator
     double& operator()(uint row, uint col);
     const double& operator()(uint row, uint col) const;
