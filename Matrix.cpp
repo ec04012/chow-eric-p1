@@ -174,6 +174,7 @@ std::ostream & operator<<(std::ostream & output, const Matrix & m) {
     return output; // enables cout << a << b << c;
 } // end function operator<<
 
+// Matrix and scalar overloads
 Matrix operator+(const Matrix &m, const double &s) {
     return m.add(s);
 }
@@ -188,4 +189,28 @@ Matrix operator*(const Matrix &m, const double &s) {
 
 Matrix operator/(const Matrix &m, const double &s) {
     return m.divide(s);
+}
+
+// Function call overloads
+double& Matrix::operator()(uint row, uint col) {
+	return arr[row][col];
+}
+
+const double& Matrix::operator()(uint row, uint col) const {
+	return arr[row][col];
+}
+
+// Assignment overload
+Matrix& Matrix::operator=(const Matrix & m) {
+    delete this;
+    m_cols = m.m_cols;
+	m_rows = m.m_rows;
+	arr = new double*[m_rows];
+    for (int i = 0; i < m.m_rows; i++) {
+        arr[i] = new double[m_cols];
+        for (int j = 0; j < m.m_cols; j++) {
+            arr[i][j] = m.at(i, j);
+        }
+    }
+    return *this;
 }
