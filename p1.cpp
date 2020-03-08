@@ -101,24 +101,33 @@ void demoDivideOverload() {
     cout << "Divide 200 by o" << endl;
     cout << 200 / o << endl;
 }
+void demoConstMatrix() {
+    const Matrix cm (o);
+    cout << "cm at 0,0" << endl;
+    cout << cm(0,0) << endl;
+    cout << cm ;
+
+    cout << "Multiply cm by 5" << endl;
+    cout << cm * 5 << endl;
+}
 
 int main() {
     // Fill matrix m, 0 - 8
     for (int i = 0; i < 9; i++) {
-        m.at(i / 3, i % 3) = i;
+        m(i / 3, i % 3) = i;
     }
     cout << "m matrix:\n" << m << endl;
 
     // Fill matrix n, 10 - 18
     for (int i = 0; i < 9; i++) {
-        n.at(i / 3, i % 3) = i + 10;
+        n(i / 3, i % 3) = i + 10;
     }
     cout << "n matrix, copy of m:\n" << n << endl;
 
     // 2d Array constructor, 100 - 92
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            o.at(i, j) = 100 - (i * 3) - j;
+            o(i, j) = 100 - (i * 3) - j;
         }
     }
     cout << "o matrix, constructed from array:\n" << o << endl;
@@ -134,6 +143,6 @@ int main() {
     demoSubtractOverload();
     demoMultiplyOverload();
     demoDivideOverload();
-
+    demoConstMatrix();
     return 0;
 }
