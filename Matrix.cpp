@@ -62,10 +62,6 @@ Matrix Matrix::add(const Matrix& m) const {
     Matrix temp (m_rows, m_cols);
     for (uint i = 0; i < m_rows; i++) {
         for (uint j = 0; j < m_cols; j++) {
-            /**
-            cout << "arr[i][j]:" << arr[i][j];
-            cout << "m[i][j]:" << m.at(i,j) << endl;
-            **/
             temp.at(i, j) = arr[i][j] + m.at(i,j);
         }
     }
@@ -111,11 +107,6 @@ Matrix Matrix::multiply(const Matrix& m) const {
         for (uint j = 0; j < m.m_cols; j++) { // for ever col in m
             for (uint k = 0; k < m_cols; k++) { // compute product of row and col
                 temp.at(i, j) = temp.at(i,j) + arr[i][k] * m.at(k,j);
-                /**
-                cout << "(" << i << "," << k << ")" << "\t";
-                cout << "(" << k << "," << j << ")" << endl;
-                cout << "temp.at " << i << "," << j << "\t" << temp.at(i,j) << endl;
-                **/
             }
         }
     }
@@ -162,16 +153,17 @@ const double& Matrix::at(uint row, uint col) const {
 
 /**
  * Returns an array containing the length of the longest number
- * of every column. Used fo formatting and printing Matrices.
+ * of every column. Used for formatting and printing Matrices.
  **/
 int* Matrix::getWidthArray() const {
     int* widthArray = new int[m_cols];
-
+    // Make sure widthArray is filled with 0s
     for (uint i = 0; i < m_cols; i++) {
         widthArray[i] = 0;
     }
     
     int temp;
+    // Fill widthArray
     for (uint c = 0; c < m_cols; c++) {
         for (uint r = 0; r < m_rows; r++) {
             temp = arr[r][c];
@@ -193,6 +185,8 @@ int* Matrix::getWidthArray() const {
 
 // Stream instertion overload
 std::ostream & operator<<(std::ostream & output, const Matrix & m) {
+    // wdithArray stores the length of the longest double in each column, 
+    // it is used to line up columns
     int* widthArray = m.getWidthArray();
     output << "[ ";
     for (uint i = 0; i < m.numRows(); i++) {        
