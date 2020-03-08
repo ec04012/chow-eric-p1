@@ -118,6 +118,12 @@ void demoAssignment() {
     temp = m;
     cout << temp << endl;
 }
+void demoMinus() {
+    cout << "Minus of matrix o" << endl;
+    cout << -o;
+    cout << "Original matrix" << endl;
+    cout << o << endl;
+}
 
 int main() {
     // Fill matrix m, 0 - 8
@@ -153,5 +159,6 @@ int main() {
     demoDivideOverload();
     demoConstMatrix();
     demoAssignment();
+    demoMinus();
     return 0;
 }

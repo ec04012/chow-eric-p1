@@ -60,8 +60,11 @@ public:
     double& operator()(uint row, uint col);
     const double& operator()(uint row, uint col) const;
 
-    //Assignment operators
+    //Assignment operator
     Matrix& operator=(const Matrix & m);
+
+    // Minus opeartor
+   Matrix operator-() const;
 
 };
 
