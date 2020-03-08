@@ -136,7 +136,7 @@ int main() {
     for (int i = 0; i < 9; i++) {
         n(i / 3, i % 3) = i + 10;
     }
-    cout << "n matrix, copy of m:\n" << n << endl;
+    cout << "n matrix:\n" << n << endl;
 
     // 2d Array constructor, 100 - 92
     for (int i = 0; i < 3; i++) {
@@ -160,6 +160,6 @@ int main() {
     demoConstMatrix();
     demoAssignment();
     demoMinus();
-        
+
     return 0;
 }
