@@ -173,3 +173,19 @@ std::ostream & operator<<(std::ostream & output, const Matrix & m) {
     }
     return output; // enables cout << a << b << c;
 } // end function operator<<
+
+Matrix operator+(const Matrix &m, const double &s) {
+    return m.add(s);
+}
+
+Matrix operator-(const Matrix &m, const double &s) {
+    return m.subtract(s);
+}
+
+Matrix operator*(const Matrix &m, const double &s) {
+    return m.multiply(s);
+}
+
+Matrix operator/(const Matrix &m, const double &s) {
+    return m.divide(s);
+}

@@ -36,7 +36,14 @@ public:
     double & at(uint row, uint col);                // get/set element at row,col
     const double & at(uint row, uint col) const;    // get element at row,col (when using a const object)
 
+    // Stream insertion
     friend std::ostream & operator<<(std::ostream & output, const Matrix & m);
+
+    // Matrix and scalar
+    friend Matrix operator+(const Matrix &m, const double &s);
+    friend Matrix operator-(const Matrix &m, const double &s);
+    friend Matrix operator*(const Matrix &m, const double &s);
+    friend Matrix operator/(const Matrix &m, const double &s);
 
 };
 
