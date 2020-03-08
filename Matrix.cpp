@@ -32,16 +32,16 @@ Matrix::Matrix(const Matrix& m) {
     m_cols = m.m_cols;
 	m_rows = m.m_rows;
 	arr = new double*[m_rows];
-    for (int i = 0; i < m.m_rows; i++) {
+    for (uint i = 0; i < m.m_rows; i++) {
         arr[i] = new double[m_cols];
-        for (int j = 0; j < m.m_cols; j++) {
+        for (uint j = 0; j < m.m_cols; j++) {
             arr[i][j] = m.at(i, j);
         }
     }
 }
 
 Matrix::~Matrix() {
-	for (int i = 0; i < m_rows; i++) {
+	for (uint i = 0; i < m_rows; i++) {
 		delete[] arr[i];
 	}
 	delete[] arr;
@@ -49,8 +49,8 @@ Matrix::~Matrix() {
 
 Matrix Matrix::add(double s) const {
     Matrix temp (m_rows, m_cols);
-    for (int i = 0; i < m_rows; i++) {
-        for (int j = 0; j < m_cols; j++) {
+    for (uint i = 0; i < m_rows; i++) {
+        for (uint j = 0; j < m_cols; j++) {
             temp.at(i, j) = arr[i][j] + s;
         }
     }
@@ -58,8 +58,8 @@ Matrix Matrix::add(double s) const {
 }
 Matrix Matrix::add(const Matrix& m) const {
     Matrix temp (m_rows, m_cols);
-    for (int i = 0; i < m_rows; i++) {
-        for (int j = 0; j < m_cols; j++) {
+    for (uint i = 0; i < m_rows; i++) {
+        for (uint j = 0; j < m_cols; j++) {
             /**
             cout << "arr[i][j]:" << arr[i][j];
             cout << "m[i][j]:" << m.at(i,j) << endl;
@@ -72,8 +72,8 @@ Matrix Matrix::add(const Matrix& m) const {
 
 Matrix Matrix::subtract(double s) const {
     Matrix temp (m_rows, m_cols);
-    for (int i = 0; i < m_rows; i++) {
-        for (int j = 0; j < m_cols; j++) {
+    for (uint i = 0; i < m_rows; i++) {
+        for (uint j = 0; j < m_cols; j++) {
             temp.at(i, j) = arr[i][j] - s;
         }
     }
@@ -81,8 +81,8 @@ Matrix Matrix::subtract(double s) const {
 }
 Matrix Matrix::subtract(const Matrix& m) const {
     Matrix temp (m_rows, m_cols);
-    for (int i = 0; i < m_rows; i++) {
-        for (int j = 0; j < m_cols; j++) {
+    for (uint i = 0; i < m_rows; i++) {
+        for (uint j = 0; j < m_cols; j++) {
             temp.at(i, j) = arr[i][j] - m.at(i,j);
         }
     }
@@ -91,8 +91,8 @@ Matrix Matrix::subtract(const Matrix& m) const {
 
 Matrix Matrix::multiply(double s) const {
     Matrix temp (m_rows, m_cols);
-    for (int i = 0; i < m_rows; i++) {
-        for (int j = 0; j < m_cols; j++) {
+    for (uint i = 0; i < m_rows; i++) {
+        for (uint j = 0; j < m_cols; j++) {
             temp.at(i, j) = arr[i][j] * s;
         }
     }
@@ -105,9 +105,9 @@ Matrix Matrix::multiply(const Matrix& m) const {
      * and same number of cols as m
      **/
     Matrix temp (m_rows, m.m_cols);
-    for (int i = 0; i < m_rows; i++) { // for every row in this
-        for (int j = 0; j < m.m_cols; j++) { // for ever col in m
-            for (int k = 0; k < m_cols; k++) { // compute product of row and col
+    for (uint i = 0; i < m_rows; i++) { // for every row in this
+        for (uint j = 0; j < m.m_cols; j++) { // for ever col in m
+            for (uint k = 0; k < m_cols; k++) { // compute product of row and col
                 temp.at(i, j) = temp.at(i,j) + arr[i][k] * m.at(k,j);
                 /**
                 cout << "(" << i << "," << k << ")" << "\t";
@@ -122,8 +122,8 @@ Matrix Matrix::multiply(const Matrix& m) const {
 
 Matrix Matrix::divide(double s) const {
     Matrix temp (m_rows, m_cols);
-    for (int i = 0; i < m_rows; i++) {
-        for (int j = 0; j < m_cols; j++) {
+    for (uint i = 0; i < m_rows; i++) {
+        for (uint j = 0; j < m_cols; j++) {
             temp.at(i, j) = arr[i][j] / s;
         }
     }
@@ -134,8 +134,8 @@ Matrix Matrix::divide(double s) const {
  **/
 Matrix Matrix::t() const {
     Matrix temp (m_cols, m_rows);
-    for (int i = 0; i < m_rows; i++) {
-        for (int j = 0; j < m_cols; j++) {
+    for (uint i = 0; i < m_rows; i++) {
+        for (uint j = 0; j < m_cols; j++) {
             temp.at(j, i) = arr[i][j];
         }
     }
@@ -202,8 +202,8 @@ Matrix operator*(const double &s, const Matrix &m) {
 }
 Matrix operator/(const double &s, const Matrix &m) {
     Matrix temp (m.m_rows, m.m_cols);
-    for (int i = 0; i < m.m_rows; i++) {
-        for (int j = 0; j < m.m_cols; j++) {
+    for (uint i = 0; i < m.m_rows; i++) {
+        for (uint j = 0; j < m.m_cols; j++) {
             temp.at(i, j) = s / m.at(i,j);
         }
     }
@@ -232,7 +232,7 @@ const double& Matrix::operator()(uint row, uint col) const {
 // Assignment overload
 Matrix& Matrix::operator=(const Matrix & m) {
     // Delete this object
-    for (int i = 0; i < m_rows; i++) {
+    for (uint i = 0; i < m_rows; i++) {
 		delete[] arr[i];
 	}
 	delete[] arr;
@@ -241,9 +241,9 @@ Matrix& Matrix::operator=(const Matrix & m) {
     m_cols = m.m_cols;
 	m_rows = m.m_rows;
 	arr = new double*[m_rows];
-    for (int i = 0; i < m.m_rows; i++) {
+    for (uint i = 0; i < m.m_rows; i++) {
         arr[i] = new double[m_cols];
-        for (int j = 0; j < m.m_cols; j++) {
+        for (uint j = 0; j < m.m_cols; j++) {
             arr[i][j] = m.at(i, j);
         }
     }

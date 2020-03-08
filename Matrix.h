@@ -8,8 +8,8 @@ class Matrix {
 private:
     double **arr;
     double tempX = 0;
-    int m_rows;
-    int m_cols;
+    uint m_rows;
+    uint m_cols;
 
 public:
 
