@@ -11,6 +11,7 @@ private:
     uint m_rows;
     uint m_cols;
 
+    int* getWidthArray() const;
 public:
 
     Matrix(uint rows, uint cols);                   // constructor (all elements initialized to 0)

@@ -2,6 +2,8 @@ typedef unsigned int uint;
 
 #include "Matrix.h"
 #include <iostream>
+#include <cmath>
+#include <iomanip>
 using namespace std;
 
 Matrix::Matrix(uint rows, uint cols) {
@@ -158,12 +160,44 @@ const double& Matrix::at(uint row, uint col) const {
 	return arr[row][col];
 }
 
+/**
+ * Returns an array containing the length of the longest number
+ * of every column. Used fo formatting and printing Matrices.
+ **/
+int* Matrix::getWidthArray() const {
+    int* widthArray = new int[m_cols];
+
+    for (uint i = 0; i < m_cols; i++) {
+        widthArray[i] = 0;
+    }
+    
+    int temp;
+    for (uint c = 0; c < m_cols; c++) {
+        for (uint r = 0; r < m_rows; r++) {
+            temp = arr[r][c];
+            if (temp < 0) {
+                temp = (int)log10(temp * -10) + 1;
+            } else if (temp == 0) {
+                temp = 1;
+            } else {
+                temp = (int)log10(temp) + 1;
+            }
+
+            if (temp > widthArray[c]) {
+                widthArray[c] = temp;
+            }
+        }
+    }
+    return widthArray;
+}
+
 // Stream instertion overload
 std::ostream & operator<<(std::ostream & output, const Matrix & m) {
+    int* widthArray = m.getWidthArray();
     output << "[ ";
     for (uint i = 0; i < m.numRows(); i++) {        
         for (uint j = 0; j < m.numCols(); j++) {
-            output << m.at(i,j);
+            output << setw(widthArray[j]) << std::setprecision(5) << m.at(i,j);
             if (j < m.numCols() - 1) {
                 output << ", ";
             }
@@ -173,6 +207,7 @@ std::ostream & operator<<(std::ostream & output, const Matrix & m) {
         }
     }
     output << " ]\n";
+    delete [] widthArray;
     return output;
 } 
 
