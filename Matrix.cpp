@@ -287,5 +287,5 @@ Matrix& Matrix::operator=(const Matrix & m) {
 
 // Assignment overload
 Matrix Matrix::operator-() const {    
-    return (*this).multiply(-1);
+    return (*this).multiply(-1).add(0);
 }
